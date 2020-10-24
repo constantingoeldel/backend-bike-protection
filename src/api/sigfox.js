@@ -1,22 +1,19 @@
-import {Router } from 'express'
-import * as admin from 'firebase-admin';
+import { Router } from 'express'
+import { addDocument } from '../services'
 
 const router = Router()
-admin.initializeApp({
-    credential: admin.credential.applicationDefault(),
-    databaseURL: 'https://bike-protection.firebaseio.com'
-  });
-const db = admin.firestore()
-
-const docRef = db.collection('users').doc('alovelace');
-
 
 router.post('/', async (req, res, next) => {
-    await docRef.set({
-        first: 'Ada',
-        last: 'Lovelace',
-        born: 1815
-      });
-    res.end('Hello')
+  const data = req.body
+  const document = {
+    geolocation: {
+      lat: data.geolocation.lat,
+      long: data.geolocation.long,
+    },
+    timestamp: data.time,
+    seqNumber: data.seqNumber,
+  }
+  addDocument(`/devices/${data.deviceId}/locations`, document)
+  res.status(200).end('Document successfully written!')
 })
 export default router
