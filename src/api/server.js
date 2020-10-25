@@ -2,6 +2,7 @@ import express from 'express'
 import helmet from 'helmet'
 import cors from 'cors'
 import sigfox from './sigfox'
+import sigfoxAdvanced from './sigfoxAdvanced'
 
 const server = express()
 server.use(helmet())
@@ -10,7 +11,7 @@ server.use(express.json())
 server.use(express.urlencoded({ extended: true }))
 
 server.use('/api/sigfox', sigfox)
-//server.use('/api/tags', tags)
+server.use('./api/sigfox-advanced', sigfoxAdvanced)
 server.get('/', (req, res) => {
   res.send('This api is connected to the bike project')
 })
