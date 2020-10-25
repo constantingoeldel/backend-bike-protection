@@ -14,7 +14,7 @@ router.post('/', async (req, res, next) => {
   //     seqNumber: data.seqNumber,
   //   }
   console.log(data)
-  addDocument(`/devices/${data.deviceId}/locations`, document)
+  //addDocument(`/devices/${data.deviceId}/locations`, document)
   res.status(200).end('Success!')
 })
 export default router

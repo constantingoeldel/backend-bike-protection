@@ -11,7 +11,7 @@ server.use(express.json())
 server.use(express.urlencoded({ extended: true }))
 
 server.use('/api/sigfox', sigfox)
-server.use('./api/sigfox-advanced', sigfoxAdvanced)
+server.use('/api/sigfox-advanced', sigfoxAdvanced)
 server.get('/', (req, res) => {
   res.send('This api is connected to the bike project')
 })

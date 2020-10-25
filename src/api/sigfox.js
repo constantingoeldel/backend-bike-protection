@@ -6,10 +6,10 @@ const router = Router()
 router.post('/', async (req, res, next) => {
   const data = req.body
   const document = {
-    geolocation: {
-      lat: data.geolocation.lat,
-      long: data.geolocation.long,
-    },
+    // geolocation: {
+    //   lat: data.geolocation.lat,
+    //   long: data.geolocation.long,
+    // },
     timestamp: data.time,
     seqNumber: data.seqNumber,
   }
